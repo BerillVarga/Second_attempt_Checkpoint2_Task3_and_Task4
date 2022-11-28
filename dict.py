@@ -5,7 +5,7 @@ conn = psycopg2.connect(
    port = '5432',
    database = "dict2",
    user = "postgres",
-   password = '***'
+   password = '****'
    )
 
 def read_dict(C):
@@ -26,6 +26,13 @@ def save_dict(C):
     cur = C.cursor()
     cur.execute("COMMIT;")
     cur.close()
+
+
+# Initial information text
+print('Hello and welcome to the dictionary, available commands:')
+print('  add    - add a word\n  list   - list dict content')
+print('  insert - insert new word')
+print('  delete - delete a word\n  quit   - quit the program')
 
 while True: ## REPL - Read Execute Program Loop
     cmd = input("Command: ")
