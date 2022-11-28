@@ -18,6 +18,8 @@ def add_word(C, word, translation):
     cur = C.cursor()
     cur.execute(f"INSERT INTO dictionary (word, translation) VALUES ('{word}', '{translation}');")
     cur.close()
+def insert_word(C, word, translation):
+    print(f"The word '{word}' with the translation '{translation}' is now inserted")
 def delete_word(C, ID):
     cur = C.cursor()
     cur.execute(f"DELETE FROM dictionary WHERE id = '{ID}';")
@@ -42,6 +44,10 @@ while True: ## REPL - Read Execute Program Loop
         name = input("  Word: ")
         phone = input("  Translation: ")
         add_word(conn, name, phone)
+    elif cmd == 'insert':
+        word = input('  Word:')
+        translation = input('  Translation:')
+        insert_word(C, word, translation)
     elif cmd == "delete":
         ID = input("  ID: ")
         delete_word(conn, ID)
